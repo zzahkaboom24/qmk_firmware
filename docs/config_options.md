@@ -423,6 +423,8 @@ Use these to enable or disable building certain features. The more you have enab
   * Key combo feature
 * `NKRO_ENABLE`
   * USB N-Key Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+* `OPENRGB_ENABLE`
+  * Enables OpenRGB support.
 * `AUDIO_ENABLE`
   * Enable the audio subsystem.
 * `KEY_OVERRIDE_ENABLE`

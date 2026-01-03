@@ -12,10 +12,11 @@
         "tap_keycode_delay": 10
     },
     "features": {
-        "bootmagic": true,
+        "bootmagic": false,
         "extrakey": true,
-        "mousekey": true,
+        "mousekey": false,
         "nkro": true,
+        "openrgb": true,
         "rgb_matrix": true
     },
     "matrix_pins": {

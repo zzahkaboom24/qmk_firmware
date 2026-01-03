@@ -21,6 +21,22 @@
 #define _BL 0
 #define _FL 1
 
+enum custom_keycodes {
+    MIC_TOG = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MIC_TOG:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTL(SS_LGUI(SS_LALT(SS_LSFT("k")))));
+            }
+            return false;
+        default:
+            return true;
+    }
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _BL: Base Layer (Default Layer)
    */
@@ -35,10 +51,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap _FL: Function Layer
    */
 [_FL] = LAYOUT(
-  QK_BOOT,  KC_MYCM,  KC_WHOM,  KC_CALC,  KC_MSEL,  KC_MPRV,  KC_MRWD,  KC_MPLY,  KC_MSTP,  KC_MUTE,  KC_VOLU,  KC_VOLD,  _______,   _______,  _______,  _______,  _______,  _______,
+  QK_BOOT,  KC_SLEP,  _______,  _______,  _______,  _______,  _______,  _______,  RGB_TOG,  KC_MUTE,  KC_VOLD,  KC_VOLU,  MIC_TOG,   _______,  _______,  _______,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,             _______,  _______,  _______,
-  _______,  _______,  RM_SATU,  RM_SATD,  RM_SPDD,  RM_SPDU,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   RM_VALU,  _______,  _______,  _______,  _______,
-  _______,  UC_WIN,   _______,                      _______,                                _______,  _______,  _______,  RM_PREV,   RM_VALD,  RM_NEXT,  _______,  _______)
+  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,
+  _______,  _______,   _______,                      _______,                                _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______)
 };

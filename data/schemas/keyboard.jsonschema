@@ -478,6 +478,18 @@
                 }
             }
         },
+        "open_rgb": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "openrgb": {"type": "boolean"}
+                    }
+                }
+            }
+        },
         "leader_key": {
             "type": "object",
             "properties": {

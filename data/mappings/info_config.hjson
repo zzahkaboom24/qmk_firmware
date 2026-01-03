@@ -75,9 +75,6 @@
     // Host
     "NKRO_DEFAULT_ON": {"info_key": "host.default.nkro", "value_type": "bool"},
 
-    // OpenRGB
-    "OPENRGB_ENABLE": {"info_key": "open_rgb.default.openrgb", "value_type": "bool"},
-
     // Layer locking
     "LAYER_LOCK_IDLE_TIMEOUT": {"info_key": "layer_lock.timeout", "value_type": "int"},
 

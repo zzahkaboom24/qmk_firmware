@@ -647,6 +647,15 @@ ifeq ($(strip $(RAW_ENABLE)), yes)
     SRC += raw_hid.c
 endif
 
+ifeq ($(strip $(OPENRGB_ENABLE)), yes)
+     ifeq ($(strip $(VIA_ENABLE)), yes)
+        $(error OPENRGB_ENABLE and VIA_ENABLE cannot currently be enabled simultaneously)
+    endif
+    RAW_ENABLE := yes
+    SRC += $(QUANTUM_DIR)/openrgb.c
+    OPT_DEFS += -DOPENRGB_ENABLE
+endif
+
 ifeq ($(strip $(DYNAMIC_KEYMAP_ENABLE)), yes)
     SEND_STRING_ENABLE := yes
 endif

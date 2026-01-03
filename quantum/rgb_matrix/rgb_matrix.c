@@ -62,6 +62,19 @@ __attribute__((weak)) rgb_t rgb_matrix_hsv_to_rgb(hsv_t hsv) {
 // -----End rgb effect includes macros-------
 // ------------------------------------------
 
+#if !defined(RGB_MATRIX_STARTUP_MODE)
+#    ifdef OPENRGB_ENABLE
+#        define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_OPENRGB_DIRECT
+#    else
+#        ifndef DISABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+#            define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
+#        else
+// fallback to solid colors if RGB_MATRIX_CYCLE_LEFT_RIGHT is disabled in userspace
+#            define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
+#        endif
+#    endif
+#endif
+
 // globals
 rgb_config_t rgb_matrix_config; // TODO: would like to prefix this with g_ for global consistancy, do this in another pr
 uint32_t     g_rgb_timer;
